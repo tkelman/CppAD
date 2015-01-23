@@ -4,6 +4,10 @@ os:
   - osx
 notifications:
   email: false
+sudo: false # sudo: false means run in a docker container,
+# which is faster but can't use apt-get to install anything
 script:
   - cmake .
+  - cat CMakeFiles/CMakeError.log
   - make -j3 check
+  - make install
